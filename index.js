@@ -6,11 +6,11 @@
  * @example istTreePassed(9,3,4,9) // true
  */
 function isTreePassed() {
-  // your code here
+  return [...arguments].some((el) => el === 3);
 }
 
-// console.log(istTreePassed(1, 2));
-// console.log(istTreePassed(9, 3, 4, 9));
+// console.log(isTreePassed(1, 2));
+// console.log(isTreePassed(9, 3, 4, 9));
 
 /**
  * 2. Write the function to flatten complex array
@@ -31,8 +31,7 @@ const add = (a) => {
   return (b) => b !== undefined ? add(a + b) : a;
 };
 
-console.log(
-  'add(1)(2)(0)(5)(0)()=',
-  add(1)(2)(0)(5)(0)()
-  ); // 8
-  
+// console.log(
+//   'add(1)(2)(0)(5)(0)()=',
+//   add(1)(2)(0)(5)(0)()
+//   ); // 8
