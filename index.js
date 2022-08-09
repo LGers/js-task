@@ -9,8 +9,8 @@ function isTreePassed() {
   return [...arguments].some((el) => el === 3);
 }
 
-// console.log(isTreePassed(1, 2));
-// console.log(isTreePassed(9, 3, 4, 9));
+console.log(isTreePassed(1, 2));
+console.log(isTreePassed(9, 3, 4, 9));
 
 /**
  * 2. Write the function to flatten complex array
@@ -18,9 +18,16 @@ function isTreePassed() {
  * @example flatten([1, [1, 2, [3, 4]], [2, 4]]) // [1, 1, 2, 3, 4, 2, 4])
  */
 function flatten(arr) {
-  // your code here
+  const newArr = [];
+  arr.forEach((el) => {
+    Array.isArray(el) ? newArr.push(...flatten(el)) : newArr.push(el);
+  });
+  return newArr;
 }
-console.log(flatten([1, [1, 2, {foo: 'bar'}, [3, 4, [5, 6]]], [2, 4]]));
+
+console.log(flatten([]));
+console.log(flatten([1, [1, 2, [3, 4]], [2, 4]]));
+console.log(flatten([1, [1, 2, {foo: 'bar'}, [3, 4, [5, 6]]], [2, 5]]));
 
 /**
  * 3. Write the function to sum added arguments by chain of calls
@@ -31,7 +38,7 @@ const add = (a) => {
   return (b) => b !== undefined ? add(a + b) : a;
 };
 
-// console.log(
-//   'add(1)(2)(0)(5)(0)()=',
-//   add(1)(2)(0)(5)(0)()
-//   ); // 8
+console.log(
+  'add(1)(2)(0)(5)(0)() =',
+  add(1)(2)(0)(5)(0)()
+  ); // 8
